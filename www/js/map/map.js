@@ -5,10 +5,10 @@ angular.module('wtfai.controllers.map', ['map.styles'])
         Ctrl.map = {};
         Ctrl.mapSettings = {
             center: {
-                latitude: 45,
-                longitude: -73
+                latitude: 37.759464,
+                longitude: -122.439231
             },
-            zoom: 2,
+            zoom: 11,
             options: {
                 styles: mapStyles
             }
