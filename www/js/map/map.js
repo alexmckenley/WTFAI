@@ -1,28 +1,26 @@
 /* global google */
 angular.module('map', ['map.styles'])
-    .controller('MapCtrl', function($scope, mapStyles) {
+    .controller('MapCtrl', function($scope, $timeout, mapStyles) {
         var Ctrl = this;
-        Ctrl.test = "hello world";
-
-        Ctrl.map = {
+        Ctrl.map = {};
+        Ctrl.mapSettings = {
             center: {
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 8,
+            zoom: 1,
             options: {
                 styles: mapStyles
             }
         };
 
-        navigator.geolocation.getCurrentPosition(function (pos) {
-            // Ctrl.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            // Ctrl.loading.hide();
-            $scope.$apply(function() {
-                Ctrl.myLocation = pos;
-                console.log('my location is', pos);
-            });
-        }, function (error) {
-            alert('Unable to get location: ' + error.message);
-        });
+        Ctrl.wtfai = function() {
+	        navigator.geolocation.getCurrentPosition(function (pos) {
+	    		Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+				Ctrl.map.getGMap().panTo(Ctrl.currentPos);
+	        	Ctrl.map.getGMap().setZoom(15);
+	        }, function (error) {
+	            alert('Unable to get location: ' + error.message);
+	        });
+        };
     });
