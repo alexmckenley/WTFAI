@@ -25,6 +25,7 @@ angular.module('map', [])
             Ctrl.map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
         };
+        initializeMap();
 
-        google.maps.event.addDomListener(window, 'load', initializeMap);
+        //google.maps.event.addDomListener(window, 'load', initializeMap);
     });
