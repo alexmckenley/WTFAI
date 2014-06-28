@@ -58,5 +58,5 @@ gulp.task('js', function() {
 //            .pipe(ngmin())
 //            .pipe(uglify())
             .pipe(concat('all.js'))
-            .pipe(gulp.dest('./build/'));
+            .pipe(gulp.dest('./www/js/'));
 });
