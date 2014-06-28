@@ -20,9 +20,8 @@ angular.module('wtfai.controllers.map', [
 
         Ctrl.neighborhoods = neighborhoods;
 
-
-
         Ctrl.wtfai = function() {
+            var map = Ctrl.map.getGMap();
             mapService.getCurrentLocation()
             .then(function(pos) {
                 Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -39,6 +38,8 @@ angular.module('wtfai.controllers.map', [
 //                var found = geoJsonHelpers.pointInPolygon(point, );
 //                console.log(found);
 
+                var map = Ctrl.map.getGMap();
+                mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos);
             });
 
             console.log(geoJsonHelpers);
