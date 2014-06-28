@@ -1,6 +1,9 @@
 /* global google */
-angular.module('wtfai.controllers.map', ['map.styles'])
-    .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService) {
+angular.module('wtfai.controllers.map', [
+    'map.styles',
+    'map.neighborhoods'
+])
+    .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService, neighborhoods) {
         var Ctrl = this;
         Ctrl.map = {};
         Ctrl.mapSettings = {
@@ -13,6 +16,8 @@ angular.module('wtfai.controllers.map', ['map.styles'])
                 styles: mapStyles
             }
         };
+
+        Ctrl.neighborhoods = neighborhoods;
 
         Ctrl.wtfai = function() {
             mapService.getCurrentLocation()
