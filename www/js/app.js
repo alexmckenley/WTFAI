@@ -6,7 +6,8 @@
 angular.module('WTFAI', [
     'ionic',
     'google-maps',
-    'map'
+    'wtfai.controllers.map',
+    'wtfai.services.map'
 ])
 
     .run(function ($ionicPlatform) {

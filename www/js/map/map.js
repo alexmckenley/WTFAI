@@ -1,6 +1,6 @@
 /* global google */
-angular.module('map', ['map.styles'])
-    .controller('MapCtrl', function($scope, $timeout, mapStyles) {
+angular.module('wtfai.controllers.map', ['map.styles'])
+    .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService) {
         var Ctrl = this;
         Ctrl.map = {};
         Ctrl.mapSettings = {
@@ -8,19 +8,18 @@ angular.module('map', ['map.styles'])
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 1,
+            zoom: 2,
             options: {
                 styles: mapStyles
             }
         };
 
         Ctrl.wtfai = function() {
-	        navigator.geolocation.getCurrentPosition(function (pos) {
-	    		Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-				Ctrl.map.getGMap().panTo(Ctrl.currentPos);
-	        	Ctrl.map.getGMap().setZoom(15);
-	        }, function (error) {
-	            alert('Unable to get location: ' + error.message);
-	        });
+            mapService.getCurrentLocation()
+            .then(function(pos) {
+                Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                Ctrl.map.getGMap().panTo(Ctrl.currentPos);
+                Ctrl.map.getGMap().setZoom(15);
+            });
         };
     });
