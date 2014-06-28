@@ -1,5 +1,5 @@
 angular.module('map.neighborhoods', [])
-    .value('neighboorhoods', {
+    .value('neighborhoods', {
     "features": [{
     "geometry": {
         "geometries": [{

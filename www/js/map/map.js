@@ -19,6 +19,15 @@ angular.module('wtfai.controllers.map', [
 
         Ctrl.neighborhoods = neighborhoods;
 
+        var deregister = $scope.$watch('MapCtrl.map', function() {
+            if(typeof Ctrl.map.getGMap === 'function') {
+                Ctrl.map.getGMap().data.addGeoJson(neighborhoods);
+                deregister();
+            }
+        });
+
+
+
         Ctrl.wtfai = function() {
             mapService.getCurrentLocation()
             .then(function(pos) {
