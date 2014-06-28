@@ -24,8 +24,11 @@ angular.module('map', [])
             };
             Ctrl.map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
+
+            google.maps.event.addDomListener(document.getElementById('map-canvas'), 'mousedown', function(e) {
+                e.preventDefault();
+                return false;
+            });
         };
         initializeMap();
-
-        //google.maps.event.addDomListener(window, 'load', initializeMap);
     });
