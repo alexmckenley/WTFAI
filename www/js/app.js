@@ -26,7 +26,7 @@ angular.module('WTFAI', [
             .state('map', {
                 url: '/map',
                 templateUrl: 'js/map/map.tpl.html',
-                controller: 'MapCtrl'
+                controller: 'MapCtrl as MapCtrl'
             });
 
         $urlRouterProvider.otherwise('/map');
