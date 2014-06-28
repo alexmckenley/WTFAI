@@ -11,7 +11,8 @@ var uglify = require('gulp-uglify');
 
 var paths = {
     sass: ['./scss/**/*.scss'],
-    js: ['./www/js/**/*.js']
+    js: ['./www/js/**/*.js'],
+    bower: ['./bower_components/**/*.min.js']
 };
 
 gulp.task('default', ['sass', 'js']);
@@ -29,6 +30,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
+    gulp.start('deps');
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.js, ['js']);
 });
@@ -59,4 +61,9 @@ gulp.task('js', function() {
 //            .pipe(uglify())
             .pipe(concat('all.js'))
             .pipe(gulp.dest('./www/build/js/'));
+});
+
+gulp.task('deps', function() {
+    gulp.src(paths.bower)
+        .pipe(gulp.dest('./www/build/lib/'));
 });
