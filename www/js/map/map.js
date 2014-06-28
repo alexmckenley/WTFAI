@@ -5,6 +5,14 @@ angular.module('map', [])
         var Ctrl = this;
         Ctrl.test = "hello world";
 
+        Ctrl.map = {
+            center: {
+                latitude: 45,
+                longitude: -73
+            },
+            zoom: 8
+        };
+
         navigator.geolocation.getCurrentPosition(function (pos) {
             // Ctrl.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
             // Ctrl.loading.hide();
@@ -15,20 +23,4 @@ angular.module('map', [])
         }, function (error) {
             alert('Unable to get location: ' + error.message);
         });
-
-        var initializeMap = function() {
-            console.log("here");
-            var mapOptions = {
-                center: new google.maps.LatLng(-34.397, 150.644),
-                zoom: 8
-            };
-            Ctrl.map = new google.maps.Map(document.getElementById("map-canvas"),
-                mapOptions);
-
-            google.maps.event.addDomListener(document.getElementById('map-canvas'), 'mousedown', function(e) {
-                e.preventDefault();
-                return false;
-            });
-        };
-        initializeMap();
     });
