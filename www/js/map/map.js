@@ -1,7 +1,6 @@
 /* global google */
-
-angular.module('map', [])
-    .controller('MapCtrl', function($scope) {
+angular.module('map', ['map.styles'])
+    .controller('MapCtrl', function($scope, mapStyles) {
         var Ctrl = this;
         Ctrl.test = "hello world";
 
@@ -10,7 +9,10 @@ angular.module('map', [])
                 latitude: 45,
                 longitude: -73
             },
-            zoom: 8
+            zoom: 8,
+            options: {
+                styles: mapStyles
+            }
         };
 
         navigator.geolocation.getCurrentPosition(function (pos) {
