@@ -42,6 +42,7 @@
 		75572F44C71640D8B68B6250 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6A09D9BC0340E18558BA1F /* UIWebViewExtension.m */; };
 		CF8AFA32C05E423BA7851698 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A942F34A1EE45B9A87DDED8 /* CDVLogger.m */; };
 		D88D731EB3CC4F4B85050256 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5873A6226FB44B66B3FDC9E0 /* CDVDevice.m */; };
+		97191F186CE447169FE1EFBF /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E3FA4FF96E4DB7A63DCEA7 /* CDVLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,8 @@
 		11EFD5E279714934A30D1A49 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		5873A6226FB44B66B3FDC9E0 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		364090152B464985908933E9 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		91E3FA4FF96E4DB7A63DCEA7 /* CDVLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocation.m"; path = "org.apache.cordova.geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		2FD589D6B78F4782A5E71AE4 /* CDVLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocation.h"; path = "org.apache.cordova.geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				11EFD5E279714934A30D1A49 /* CDVLogger.h */,
 				5873A6226FB44B66B3FDC9E0 /* CDVDevice.m */,
 				364090152B464985908933E9 /* CDVDevice.h */,
+				91E3FA4FF96E4DB7A63DCEA7 /* CDVLocation.m */,
+				2FD589D6B78F4782A5E71AE4 /* CDVLocation.h */,
 			);
 			name = Plugins;
 			path = "HelloCordova/Plugins";
@@ -440,6 +445,7 @@
 				75572F44C71640D8B68B6250 /* UIWebViewExtension.m in Sources */,
 				CF8AFA32C05E423BA7851698 /* CDVLogger.m in Sources */,
 				D88D731EB3CC4F4B85050256 /* CDVDevice.m in Sources */,
+				97191F186CE447169FE1EFBF /* CDVLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
