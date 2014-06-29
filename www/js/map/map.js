@@ -1,79 +1,41 @@
 /* global google */
 angular.module('wtfai.controllers.map', [
-    'map.styles',
     'map.neighborhoods',
-    'wtfai.services.geoJsonHelpers'
+    'wtfai.services.geoJsonHelpers',
+    'wtfai.services.initialMapSettings'
 ])
-    .controller('MapCtrl', function($scope, $timeout, $animate, mapStyles, mapService, neighborhoods) {
+    .controller('MapCtrl', function($scope, mapService, neighborhoods, initialMapSettings) {
         var Ctrl = this;
         Ctrl.map = {};
-//         Ctrl.currentHood = {};
-//         Ctrl.hoodName = '';
-//         Ctrl.hoodStyle = '';
-//         Ctrl.showHoodName = false;
-// >>>>>>> Including angular-animate
-        Ctrl.mapSettings = {
-            center: {
-                latitude: 37.759464,
-                longitude: -122.439231
-            },
-            zoom: 11,
-            options: {
-                styles: mapStyles
+        Ctrl.currentHood = {};
+        Ctrl.neighborhoods = neighborhoods;
+
+        //san francisco setting
+        Ctrl.mapSettings = initialMapSettings;
+
+        // triggered when footer is clicked
+        // if there is a neighborhood already, clear it and display button
+        // if not:
+            // find current location, zoom to it
+            // display current neighborhood and color
+        Ctrl.wtfai = function() {
+            if (Ctrl.currentHood.name) {
+                Ctrl.currentHood = {};
+                return;
+            } else {
+                var map = Ctrl.map.getGMap();
+                mapService.displayCurrentLocation(map)
+                .then(function(hood) {
+                    Ctrl.currentHood = hood;
+                });
             }
         };
 
-        Ctrl.neighborhoods = neighborhoods;
-
-        Ctrl.wtfai = function() {
-            mapService.getCurrentLocation()
-            .then(function(pos) {
-                Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                var map = Ctrl.map.getGMap();
-
-                var point = {
-                    type: 'Point',
-                    coordinates: [
-                        pos.coords.latitude,
-                        pos.coords.longitude
-                    ]
-                };
-
-                mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos)
-                .then(function() {
-                    // debugger;
-                    var marker = new google.maps.Marker({
-                        position: Ctrl.currentPos,
-                        map: map,
-                        title: 'Where the fuck am I?!?!',
-                        animation: google.maps.Animation.BOUNCE
-                    });
-                    var hood = mapService.findCurrentHood(Ctrl.currentPos, Ctrl.neighborhoods);
-                    if (hood.name === '???') {
-                        Ctrl.hoodName = 'hell'
-                    } else {
-                        Ctrl.hoodName = hood.name;
-                    }
-                    Ctrl.hoodStyle = 'background-color: ' + hood.style.fill.color;
-                    Ctrl.showHoodName = true;
-                });
-            });
-        };
-
+        // handles click events on neighborhoods
         Ctrl.createClickHandler = function(hood) {
             return function() {
                 $scope.$apply(function() {
                     Ctrl.currentHood = hood;
-//                     console.log(hood);
-//                     Ctrl.hoodName = hood.name
-//                     Ctrl.hoodStyle = 'color: ' + hood.style.fill.color;
-//                     Ctrl.showHoodName = true;
-//                     // Ctrl.hoodColor = hood.
-// >>>>>>> Including angular-animate
-//                     Ctrl.hoodName = hood.name;
-//                     Ctrl.hoodStyle = 'background-color: ' + hood.style.fill.color;
-//                     Ctrl.showHoodName = true;
-// >>>>>>> Implemented current location wtfai
                 });
             };
         };
