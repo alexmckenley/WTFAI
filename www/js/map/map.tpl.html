@@ -6,10 +6,10 @@
 
 <ion-footer-bar class="bar-dark bar-custom" style="background-color: {{ MapCtrl.thisHood.style.fill.color }}">
     <div ng-hide="MapCtrl.thisHood.name" ng-click="MapCtrl.wtfai()" class="footer-text wtfai-footer wtfai-button"><i class="icon ion-ios7-location-outline"></i>
-    	Where the f*ck am I ?!?!
+        Where the fuck am I?
     </div>
     <div ng-show="MapCtrl.thisHood.name" class="footer-text wtfai-footer" ng-click="MapCtrl.wtfai()">
-    	<span ng-show="MapCtrl.thisHood.isCurrent">You're F*cking in </span>
+    	<span ng-show="MapCtrl.thisHood.isCurrent">You're fucking in </span>
     	{{ MapCtrl.thisHood.name }}!!
     </div>
 </ion-footer-bar>

@@ -177,7 +177,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Castro-Upper Market"
+                "name": "The Castro"
             },
             {
                 "geojson": {
@@ -267,7 +267,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Downtown"
+                "name": "The Tenderloin"
             },
             {
                 "geojson": {
@@ -331,7 +331,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Financial District"
+                "name": "The Financial District"
             },
             {
                 "geojson": {
@@ -548,7 +548,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Marina"
+                "name": "The Marina"
             },
             {
                 "geojson": {
@@ -572,7 +572,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Mission"
+                "name": "The Mission"
             },
             {
                 "geojson": {
@@ -755,7 +755,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "Outer Mission"
+                "name": "The Outer Mission"
             },
             {
                 "geojson": {
@@ -1053,7 +1053,7 @@ angular.module('map.neighborhoods', [])
                         ]
                     ]
                 },
-                "name": "South Of Market"
+                "name": "SOMA"
             },
             {
                 "geojson": {
