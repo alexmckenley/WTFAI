@@ -1,5 +1,7 @@
 <ion-content>
-    <google-map options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom"></google-map>
+    <google-map options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom">
+        <polygon ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geoJson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
+    </google-map>
 </ion-content>
 <ion-footer-bar class="bar-dark">
     <div class="buttons">
