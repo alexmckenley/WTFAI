@@ -1,15 +1,20 @@
+<ion-header-bar class="bar-dark" style="{{MapCtrl.hoodStyle}}">
+	<div ng-show="MapCtrl.showHoodName" class="neighborhood-name">
+		I'm in F*cking {{ MapCtrl.hoodName }} man
+	</div>
+</ion-header-bar>	
 <ion-content>
     <google-map data-tap-disabled="true" options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom">
         <polygon clickable="true" events="{click: MapCtrl.createClickHandler(hood)}" ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geojson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
-    </google-map>
+<!--     <google-map options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom">
+        <polygon clickable="true" events="{mouseup: MapCtrl.createClickHandler(hood)}" ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geojson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
+>>>>>>> Implemented current location wtfai
+ -->    </google-map>
     <div class="hood-name" style="background-color: {{ MapCtrl.currentHood.style.fill.color }}">
         {{ MapCtrl.currentHood.name }}
 <!-- =======
 </ion-content>
-<ion-footer-bar ng-show="MapCtrl.showHoodName" ng-animate="'animate'" class="bar-dark" style="{{MapCtrl.hoodStyle}}">
-	<div>
-		My Hood: {{ MapCtrl.hoodName }}
-	</div>
+<ion-footer-bar ng-animate="'animate'" class="bar-dark">
     <div class="buttons">
         <button ng-click="MapCtrl.wtfai()" class="button"><i class="icon ion-ios7-location-outline"> </i>Where the f*ck am I?</button>
 >>>>>>> Including angular-animate -->

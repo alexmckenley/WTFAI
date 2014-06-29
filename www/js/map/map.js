@@ -4,7 +4,7 @@ angular.module('wtfai.controllers.map', [
     'map.neighborhoods',
     'wtfai.services.geoJsonHelpers'
 ])
-    .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService, neighborhoods, geoJsonHelpers) {
+    .controller('MapCtrl', function($scope, $timeout, $animate, mapStyles, mapService, neighborhoods) {
         var Ctrl = this;
         Ctrl.map = {};
 //         Ctrl.currentHood = {};
@@ -39,17 +39,25 @@ angular.module('wtfai.controllers.map', [
                     ]
                 };
 
-                mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos);
-                var marker = new google.maps.Marker({
-                    position: Ctrl.currentPos,
-                    map: map,
-                    title: 'Where the fuck am I?!?!'
+                mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos)
+                .then(function() {
+                    // debugger;
+                    var marker = new google.maps.Marker({
+                        position: Ctrl.currentPos,
+                        map: map,
+                        title: 'Where the fuck am I?!?!',
+                        animation: google.maps.Animation.BOUNCE
+                    });
+                    var hood = mapService.findCurrentHood(Ctrl.currentPos, Ctrl.neighborhoods);
+                    if (hood.name === '???') {
+                        Ctrl.hoodName = 'hell'
+                    } else {
+                        Ctrl.hoodName = hood.name;
+                    }
+                    Ctrl.hoodStyle = 'background-color: ' + hood.style.fill.color;
+                    Ctrl.showHoodName = true;
                 });
             });
-        };
-
-        Ctrl.showHood = function(hood) {
-            Ctrl.myHood = hood;
         };
 
         Ctrl.createClickHandler = function(hood) {
@@ -62,6 +70,10 @@ angular.module('wtfai.controllers.map', [
 //                     Ctrl.showHoodName = true;
 //                     // Ctrl.hoodColor = hood.
 // >>>>>>> Including angular-animate
+//                     Ctrl.hoodName = hood.name;
+//                     Ctrl.hoodStyle = 'background-color: ' + hood.style.fill.color;
+//                     Ctrl.showHoodName = true;
+// >>>>>>> Implemented current location wtfai
                 });
             };
         };

@@ -1,5 +1,5 @@
 angular.module('wtfai.services.map', [])
-	.factory('mapService', function($q, $timeout) {
+	.factory('mapService', function($q, $timeout, geoJsonHelpers) {
 		return {
 			getCurrentLocation: function() {
 				var deferred = $q.defer();
@@ -28,6 +28,21 @@ angular.module('wtfai.services.map', [])
 				};
 				zoomOnce();
 	            return deferred.promise;
+			},
+
+			findCurrentHood: function(point, neighborhoods) {
+				var currPoint = {
+					type: 'Point',
+					coordinates: [point.A, point.k]
+				};
+
+				var myNeighborhood = "???";
+				_.each(neighborhoods, function(neighborhood) {
+					if (geoJsonHelpers.pointInPolygon(currPoint, neighborhood.geojson)) {
+						myNeighborhood = neighborhood;
+					}
+				});
+				return myNeighborhood;
 			}
 		};
 	});
