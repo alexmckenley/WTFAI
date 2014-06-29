@@ -7,7 +7,7 @@ angular.module('wtfai.controllers.map', [
     .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService, neighborhoods, geoJsonHelpers) {
         var Ctrl = this;
         Ctrl.map = {};
-        Ctrl.hoodName = "";
+        Ctrl.currentHood = {};
         Ctrl.mapSettings = {
             center: {
                 latitude: 37.759464,
@@ -22,7 +22,6 @@ angular.module('wtfai.controllers.map', [
         Ctrl.neighborhoods = neighborhoods;
 
         Ctrl.wtfai = function() {
-            var map = Ctrl.map.getGMap();
             mapService.getCurrentLocation()
             .then(function(pos) {
                 Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
@@ -35,8 +34,6 @@ angular.module('wtfai.controllers.map', [
                         pos.coords.longitude
                     ]
                 };
-//                var found = geoJsonHelpers.pointInPolygon(point, );
-//                console.log(found);
 
                 mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos);
                 var marker = new google.maps.Marker({
@@ -54,7 +51,7 @@ angular.module('wtfai.controllers.map', [
         Ctrl.createClickHandler = function(hood) {
             return function() {
                 $scope.$apply(function() {
-                    Ctrl.hoodName = hood.name
+                    Ctrl.currentHood = hood;
                 });
             };
         };

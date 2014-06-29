@@ -2,15 +2,10 @@
     <google-map data-tap-disabled="true" options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom">
         <polygon clickable="true" events="{click: MapCtrl.createClickHandler(hood)}" ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geojson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
     </google-map>
-    <div class="hood-name">
-        {{ MapCtrl.hoodName }}
+    <div class="hood-name" style="background-color: {{ MapCtrl.currentHood.style.fill.color }}">
+        {{ MapCtrl.currentHood.name }}
     </div>
 </ion-content>
-<ion-footer-bar class="bar-dark">
-	<div>
-		My Hood: {{ MapCtrl.hoodName }}
-	</div>
-    <div class="buttons">
-        <button ng-click="MapCtrl.wtfai()" class="button"><i class="icon ion-ios7-location-outline"> </i>Where the f*ck am I?</button>
-    </div>
+<ion-footer-bar class="bar-dark bar-custom" style="background-color: {{ MapCtrl.currentHood.style.fill.color }}">
+    <div ng-class="{ 'custom-hood': MapCtrl.currentHood.name }" class="footer-text" ng-click="MapCtrl.wtfai()">{{ MapCtrl.currentHood.name || 'Where the f*ck am I?' }}</div>
 </ion-footer-bar>
