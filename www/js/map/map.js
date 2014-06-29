@@ -7,7 +7,11 @@ angular.module('wtfai.controllers.map', [
     .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService, neighborhoods, geoJsonHelpers) {
         var Ctrl = this;
         Ctrl.map = {};
-        Ctrl.currentHood = {};
+//         Ctrl.currentHood = {};
+//         Ctrl.hoodName = '';
+//         Ctrl.hoodStyle = '';
+//         Ctrl.showHoodName = false;
+// >>>>>>> Including angular-animate
         Ctrl.mapSettings = {
             center: {
                 latitude: 37.759464,
@@ -52,6 +56,12 @@ angular.module('wtfai.controllers.map', [
             return function() {
                 $scope.$apply(function() {
                     Ctrl.currentHood = hood;
+//                     console.log(hood);
+//                     Ctrl.hoodName = hood.name
+//                     Ctrl.hoodStyle = 'color: ' + hood.style.fill.color;
+//                     Ctrl.showHoodName = true;
+//                     // Ctrl.hoodColor = hood.
+// >>>>>>> Including angular-animate
                 });
             };
         };
