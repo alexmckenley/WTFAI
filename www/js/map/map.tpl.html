@@ -1,9 +1,12 @@
 <ion-content>
     <google-map options="MapCtrl.mapSettings.options" draggable="true" control="MapCtrl.map" center="MapCtrl.mapSettings.center" zoom="MapCtrl.mapSettings.zoom">
-        <polygon ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geoJson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
+        <polygon clickable="true" events="{click: MapCtrl.createClickHandler(hood)}" ng-repeat="hood in MapCtrl.neighborhoods" path="hood.geoJson" stroke="hood.style.stroke" fill="hood.style.fill"></polygon>
     </google-map>
 </ion-content>
 <ion-footer-bar class="bar-dark">
+	<div>
+		My Hood: {{ MapCtrl.hoodName }}
+	</div>
     <div class="buttons">
         <button ng-click="MapCtrl.wtfai()" class="button"><i class="icon ion-ios7-location-outline"> </i>Where the f*ck am I?</button>
     </div>

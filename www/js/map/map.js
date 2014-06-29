@@ -7,6 +7,7 @@ angular.module('wtfai.controllers.map', [
     .controller('MapCtrl', function($scope, $timeout, mapStyles, mapService, neighborhoods, geoJsonHelpers) {
         var Ctrl = this;
         Ctrl.map = {};
+        Ctrl.hoodName = "";
         Ctrl.mapSettings = {
             center: {
                 latitude: 37.759464,
@@ -44,7 +45,17 @@ angular.module('wtfai.controllers.map', [
                     title: 'Where the fuck am I?!?!'
                 });
             });
+        };
 
-            console.log(geoJsonHelpers);
+        Ctrl.showHood = function(hood) {
+            Ctrl.myHood = hood;
+        };
+
+        Ctrl.createClickHandler = function(hood) {
+            return function() {
+                $scope.$apply(function() {
+                    Ctrl.hoodName = hood.name
+                });
+            };
         };
     });
