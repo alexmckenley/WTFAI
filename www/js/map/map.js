@@ -7,7 +7,7 @@ angular.module('wtfai.controllers.map', [
     .controller('MapCtrl', function($scope, mapService, neighborhoods, initialMapSettings) {
         var Ctrl = this;
         Ctrl.map = {};
-        Ctrl.currentHood = {};
+        Ctrl.thisHood = {};
         Ctrl.neighborhoods = neighborhoods;
 
         //san francisco setting
@@ -19,14 +19,15 @@ angular.module('wtfai.controllers.map', [
             // find current location, zoom to it
             // display current neighborhood and color
         Ctrl.wtfai = function() {
-            if (Ctrl.currentHood.name) {
-                Ctrl.currentHood = {};
+            if (Ctrl.thisHood.name) {
+                Ctrl.thisHood = {};
                 return;
             } else {
                 var map = Ctrl.map.getGMap();
                 mapService.displayCurrentLocation(map)
                 .then(function(hood) {
-                    Ctrl.currentHood = hood;
+                    hood.isCurrent = true;
+                    Ctrl.thisHood = hood;
                 });
             }
         };
@@ -35,7 +36,7 @@ angular.module('wtfai.controllers.map', [
         Ctrl.createClickHandler = function(hood) {
             return function() {
                 $scope.$apply(function() {
-                    Ctrl.currentHood = hood;
+                    Ctrl.thisHood = hood;
                 });
             };
         };
