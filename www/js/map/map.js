@@ -25,8 +25,7 @@ angular.module('wtfai.controllers.map', [
             mapService.getCurrentLocation()
             .then(function(pos) {
                 Ctrl.currentPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                Ctrl.map.getGMap().panTo(Ctrl.currentPos);
-                Ctrl.map.getGMap().setZoom(15);
+                var map = Ctrl.map.getGMap();
 
                 var point = {
                     type: 'Point',
@@ -38,8 +37,12 @@ angular.module('wtfai.controllers.map', [
 //                var found = geoJsonHelpers.pointInPolygon(point, );
 //                console.log(found);
 
-                var map = Ctrl.map.getGMap();
                 mapService.zoomToCurrentLocation(map, map.getZoom(), 15, Ctrl.currentPos);
+                var marker = new google.maps.Marker({
+                    position: Ctrl.currentPos,
+                    map: map,
+                    title: 'Where the fuck am I?!?!'
+                });
             });
 
             console.log(geoJsonHelpers);

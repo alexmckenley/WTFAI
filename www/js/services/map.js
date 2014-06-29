@@ -21,7 +21,7 @@ angular.module('wtfai.services.map', [])
 						map.setZoom(currentZoom++);
 						$timeout(function() {
 							zoomOnce();
-						}, 50);
+						}, 100);
 					} else {
 						deferred.resolve();
 					}
