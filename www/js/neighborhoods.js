@@ -1190,25 +1190,21 @@ angular.module('map.neighborhoods', [])
         ];
 
         var colors = [
+            "#F85210",
+            "#8476B8",
             "#D061D1",
             "#35D126",
-            "#F3501D",
             "#23AAD8",
             "#C5AA1E",
             "#F14780",
             "#46C03A",
-            "#EE81EA",
-            "#49B953",
-            "#E977BA",
             "#E0762A",
             "#F63492",
-            "#EE47CB",
             "#F15239",
             "#53A3E9",
             "#CA8025",
             "#D683D5",
             "#3D91C6",
-            "#7E83F1",
             "#7EAE31",
             "#EA8F1E",
             "#F25356",
@@ -1216,9 +1212,7 @@ angular.module('map.neighborhoods', [])
             "#BA71B2",
             "#708ED4",
             "#EE3DAE",
-            "#67D45E",
             "#E44AEA",
-            "#B66AF2",
             "#39A31C",
             "#AEBE1F",
             "#32D57D",
@@ -1230,12 +1224,7 @@ angular.module('map.neighborhoods', [])
             "#B3871A",
             "#4A91F1",
             "#DD5FB4",
-            "#7DCD34",
-            "#459C3C",
-            "#E8576D",
-            "#64D123",
-            "#669526",
-            "#97CC35"
+            "#E8576D"
         ];
 
         hoods.forEach(function(hood, i) {
